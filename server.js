@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const app = express();
 const API_PATH_MEDICINA = '/api-medicina';
-const API_PATH_SCRAPPING = '/api-medicina';
+const API_PATH_SCRAPPING = '/api-scrapping';
 
 app.use(function(req, res, next) {
    res.header('Access-Control-Allow-Origin', '*');
@@ -26,6 +26,9 @@ app.use(API_PATH_SCRAPPING + '/fravega', require('./scrapping/routes/routes'));
 //Medicina
 app.use(API_PATH_MEDICINA + '/getData', require('./medicina-backend/routes/routes'));
 app.use(API_PATH_MEDICINA + '/getConsultas', require('./medicina-backend/routes/routes'));
+
+//Fiat ruvi
+require('./fiat-ruvi/productos/productos.route.js')(app);
 
 ////////////////////////////////////////
 app.listen(port, function(){
