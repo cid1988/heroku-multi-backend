@@ -1,8 +1,8 @@
 const env = {
-  database: 'automotor',
-  username: 'root',
-  password: '1234',
-  host: 'localhost',
+  database: 'bcjkat46xuevrlrkj1lf',
+  username: 'uydppfro53w5mi1s',
+  password: 'LbI5udi7XBEVhRD08YEf',
+  host: 'bcjkat46xuevrlrkj1lf-mysql.services.clever-cloud.com',
   dialect: 'mariadb',
   pool: {
     max: 5,

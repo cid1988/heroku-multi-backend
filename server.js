@@ -1,10 +1,12 @@
-const port = process.env.PORT || 3000;
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const app = express();
-const API_PATH_MEDICINA = '/api-medicina';
-const API_PATH_SCRAPPING = '/api-scrapping';
+require('dotenv').config()
+const port = process.env.PORT || 3001;
+const API_PATH_MEDICINA = process.env.API_PATH_MEDICINA;
+const API_PATH_SCRAPPING = process.env.API_PATH_SCRAPPING;
+const API_PATH_FIAT_RUVI = process.env.API_PATH_FIAT_RUVI;
 
 app.use(function(req, res, next) {
    res.header('Access-Control-Allow-Origin', '*');
@@ -28,7 +30,8 @@ app.use(API_PATH_MEDICINA + '/getData', require('./medicina-backend/routes/route
 app.use(API_PATH_MEDICINA + '/getConsultas', require('./medicina-backend/routes/routes'));
 
 //Fiat ruvi
-require('./fiat-ruvi/productos/productos.route.js')(app);
+// require('./fiat-ruvi/productos/productos.route.js')(app);
+app.use(API_PATH_FIAT_RUVI + '/productos', require('./fiat-ruvi/productos/productos.route'));
 
 ////////////////////////////////////////
 app.listen(port, function(){
